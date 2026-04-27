@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>周雨田 - 包豪斯风格个人作品集</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <style>
+    @keyframes ripple {
+      0% { width: 0; height: 0; opacity: 0.5; }
+      100% { width: 500px; height: 500px; opacity: 0; }
+    }
+    .animate-ripple {
+      animation: ripple 0.6s linear;
+    }
+    ::selection {
+      background-color: #0033FF;
+      color: white;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #FFFFFF;
+      color: #000000;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    /* Bauhaus Grid Lines Background (Subtle) */
+    .bg-grid-pattern {
+      background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px),
+                        linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .animate-spin-slow {
+      animation: spin 20s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="selection:bg-[#0033FF] selection:text-white flex flex-col min-h-screen">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md border-b-2 border-black z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div 
+        class="text-2xl font-black tracking-tighter cursor-pointer hover:text-[#0033FF] transition-colors"
+        onclick="navigateTo('home')"
+      >
+        ZHOU YUTIAN.
+      </div>
+      
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex space-x-12 text-sm font-bold tracking-widest uppercase">
+        <button onclick="navigateTo('home')" id="nav-btn-home" class="hover:text-[#0033FF] transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-[#0033FF] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left text-[#0033FF] after:scale-x-100">Home Page</button>
+        <button onclick="navigateTo('home'); setTimeout(() => document.getElementById('works-section').scrollIntoView({behavior: 'smooth'}), 100);" class="hover:text-[#0033FF] transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-[#0033FF] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left">Works</button>
+        <button onclick="navigateTo('about')" id="nav-btn-about" class="hover:text-[#0033FF] transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-[#0033FF] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left">My</button>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button class="md:hidden" onclick="toggleMobileMenu()">
+        <i data-lucide="menu" id="menu-icon" class="w-7 h-7"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden absolute top-20 left-0 right-0 bg-white border-b-2 border-black flex flex-col items-center py-6 space-y-6 text-lg font-bold shadow-xl z-50">
+      <button onclick="navigateTo('home'); toggleMobileMenu();">HOME PAGE</button>
+      <button onclick="navigateTo('home'); toggleMobileMenu(); setTimeout(() => document.getElementById('works-section').scrollIntoView({behavior: 'smooth'}), 100);">WORKS</button>
+      <button onclick="navigateTo('about'); toggleMobileMenu();">MY</button>
+    </div>
+  </nav>
+
+  <main class="flex-grow">
+    
+    <!-- ==================== HOME VIEW ==================== -->
+    <div id="view-home" class="pt-20 block">
+      <!-- Hero Section -->
+      <section class="min-h-[85vh] flex flex-col justify-center px-6 lg:px-20 relative overflow-hidden bg-grid-pattern py-12">
+        <div class="fade-in-el opacity-0 translate-y-12 transition-all duration-700 ease-out max-w-7xl w-full mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" style="transition-delay: 100ms;">
+          <div>
+            <h1 class="text-[12vw] lg:text-[7vw] leading-[0.9] font-black uppercase tracking-tighter mb-4 mix-blend-difference text-black">
+              ZHOU <br /> YUTIAN
+            </h1>
+            <h2 class="text-[8vw] lg:text-[4vw] font-black tracking-widest mb-6 mix-blend-difference text-black">
+              周雨田
+            </h2>
+            <div class="w-24 h-2 bg-[#0033FF] mb-8"></div>
+            <p class="text-xl md:text-2xl font-medium max-w-xl leading-relaxed">
+              广播电视编导 / 导演 / 编剧
+              <br />
+              <span class="text-gray-500 text-lg mt-2 block">
+                拥有3年+新媒体内容创作实战经验，覆盖短视频、微短剧、AI漫剧等多元赛道。具备从内容策划、脚本创作、拍摄剪辑到爆款孵化的全链路能力。
+              </span>
+            </p>
+            <div class="mt-12 flex space-x-6">
+              <button class="btn-ripple relative overflow-hidden active:scale-[0.98] transition-transform duration-200 uppercase font-bold tracking-widest text-sm flex items-center justify-center bg-black text-white hover:bg-[#0033FF] border-2 border-black hover:border-[#0033FF] px-8 py-4" onclick="document.getElementById('works-section').scrollIntoView({behavior: 'smooth'})">
+                <span class="relative z-10 flex items-center">View Works</span>
+              </button>
+              <button class="btn-ripple relative overflow-hidden active:scale-[0.98] transition-transform duration-200 uppercase font-bold tracking-widest text-sm flex items-center justify-center border-2 border-black bg-transparent text-black hover:bg-black hover:text-white px-8 py-4" onclick="navigateTo('about')">
+                <span class="relative z-10 flex items-center">About Me</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="relative group w-full max-w-md mx-auto lg:mx-0 justify-self-end mt-12 lg:mt-0">
+            <!-- Bauhaus style offset shadow -->
+            <div class="absolute inset-0 bg-[#0033FF] translate-x-6 translate-y-6 border-2 border-black transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+            <img 
+              src="https://i.postimg.cc/FKC6nTRj/wei-xin-tu-pian-20260426230859-643-81.jpg" 
+              alt="周雨田 Profile" 
+              class="relative z-10 w-full h-auto aspect-[3/4] object-cover border-2 border-black grayscale group-hover:grayscale-0 transition-all duration-500 bg-gray-200"
+            />
+          </div>
+        </div>
+        <!-- Geometric Decorative Element -->
+        <div class="absolute top-1/4 left-[45%] w-64 h-64 border-[12px] border-[#0033FF] opacity-10 animate-spin-slow pointer-events-none hidden lg:block"></div>
+      </section>
+
+      <!-- Works Grid Section -->
+      <section id="works-section" class="py-24 px-6 lg:px-20 border-t-2 border-black bg-white">
+        <div class="fade-in-el opacity-0 translate-y-12 transition-all duration-700 ease-out">
+          <div class="flex justify-between items-end mb-16">
+            <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter">Selected<br/><span class="text-[#0033FF]">Works</span></h2>
+            <p class="hidden md:block font-bold text-xl">(06)</p>
+          </div>
+        </div>
+
+        <div id="works-grid" class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <!-- Dynamic Works Grid injected by JS -->
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== WORK DETAIL VIEW ==================== -->
+    <div id="view-work" class="pt-20 bg-white min-h-screen hidden">
+      <!-- Detail Hero Image -->
+      <div class="w-full h-[50vh] md:h-[60vh] border-b-2 border-black bg-gray-100 relative">
+        <img 
+          id="work-hero-img"
+          src="" 
+          alt="Hero" 
+          class="w-full h-full object-cover" 
+        />
+        <button 
+          onclick="navigateTo('home')"
+          class="absolute top-6 left-6 md:top-12 md:left-12 bg-white border-2 border-black p-4 hover:bg-[#0033FF] hover:text-white hover:border-[#0033FF] transition-all duration-300 active:scale-95 flex items-center gap-2 font-bold uppercase"
+        >
+          <i data-lucide="arrow-left" class="w-5 h-5"></i> Back
+        </button>
+      </div>
+
+      <!-- Detail Content -->
+      <div class="max-w-5xl mx-auto px-6 py-20">
+        <div class="fade-in-el opacity-0 translate-y-12 transition-all duration-700 ease-out">
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+            <!-- Left Column: Meta -->
+            <div class="lg:col-span-1 space-y-8">
+              <div>
+                <h4 class="text-sm text-gray-500 uppercase tracking-widest font-bold mb-2">Category</h4>
+                <p id="work-category" class="text-xl font-bold"></p>
+              </div>
+              <div>
+                <h4 class="text-sm text-gray-500 uppercase tracking-widest font-bold mb-2">Timeline</h4>
+                <p id="work-date" class="text-xl font-bold"></p>
+              </div>
+              <div>
+                <h4 class="text-sm text-gray-500 uppercase tracking-widest font-bold mb-2">Tags</h4>
+                <div id="work-tags" class="flex flex-wrap gap-2">
+                  <!-- Dynamic tags -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Description -->
+            <div class="lg:col-span-2">
+              <h1 id="work-title" class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 leading-none"></h1>
+              <div class="w-16 h-2 bg-[#0033FF] mb-10"></div>
+              
+              <h4 class="text-2xl font-bold mb-6">项目介绍与成果</h4>
+              <p id="work-description" class="text-lg text-gray-700 leading-relaxed font-medium mb-12"></p>
+
+              <!-- Dynamic Image Gallery -->
+              <div id="work-gallery" class="flex flex-col gap-12 mt-12">
+                <!-- Dynamic visual galleries -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next Project Teaser -->
+      <div class="border-t-2 border-black bg-[#0033FF] text-white py-12 px-6 flex justify-center cursor-pointer hover:bg-black transition-colors" onclick="navigateTo('home')">
+        <h2 class="text-3xl font-black uppercase tracking-widest flex items-center gap-4">
+          Explore More Works <i data-lucide="arrow-up-right" class="w-8 h-8"></i>
+        </h2>
+      </div>
+    </div>
+
+    <!-- ==================== ABOUT VIEW ==================== -->
+    <div id="view-about" class="pt-20 min-h-screen bg-grid-pattern hidden">
+      <div class="max-w-5xl mx-auto px-6 py-24">
+        <div class="fade-in-el opacity-0 translate-y-12 transition-all duration-700 ease-out">
+          <h1 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-12">ABOUT <span class="text-[#0033FF]">ME</span></h1>
+          <div class="w-full border-t-4 border-black mb-16"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div class="fade-in-el opacity-0 translate-y-12 transition-all duration-700 ease-out" style="transition-delay: 100ms;">
+            <h3 class="text-3xl font-black uppercase border-b-2 border-black pb-4 mb-8">Professional Skills</h3>
+            <ul class="space-y-6 font-medium text-lg">
+              <li class="flex flex-col"><strong class="text-xl mb-1">编导能力</strong>独立完成短视频、纪录片、宣传片策划，擅长故事架构与节奏把控。胜任导演、场记，精通镜头语言。</li>
+              <li class="flex flex-col"><strong class="text-xl mb-1">后期制作</strong>精通 Premiere Pro, DaVinci Resolve, 剪映。熟练 AE, PS, Canva。</li>
+              <li class="flex flex-col"><strong class="text-xl mb-1">拍摄设备</strong>熟练操作索尼A7M4/FX3、佳能R5/R6、大疆无人机/稳定器、基础灯光及收音。</li>
+              <li class="flex flex-col"><strong class="text-xl mb-1">新媒体运营</strong>熟悉抖音、B站、小红书规则。账号全流程运营、爆款拆解逻辑。</li>
+            </ul>
+          </div>
+
+          <div class="fade-in-el opacity-0 translate-y-12 transition-all duration-700 ease-out" style="transition-delay: 200ms;">
+            <h3 class="text-3xl font-black uppercase border-b-2 border-black pb-4 mb-8">Experience</h3>
+            <div class="space-y-8">
+              <div>
+                <div class="flex justify-between items-baseline mb-1">
+                  <h4 class="text-xl font-bold">点众科技 / AI漫剧部</h4>
+                  <span class="text-sm font-bold border border-black px-2 py-1">2026</span>
+                </div>
+                <p class="text-gray-600">内容运营实习生</p>
+              </div>
+              <div>
+                <div class="flex justify-between items-baseline mb-1">
+                  <h4 class="text-xl font-bold">网易 / 浪潮工作室</h4>
+                  <span class="text-sm font-bold border border-black px-2 py-1">2025</span>
+                </div>
+                <p class="text-gray-600">编导实习生</p>
+              </div>
+              <div>
+                <div class="flex justify-between items-baseline mb-1">
+                  <h4 class="text-xl font-bold">SDGs世博全球青年联盟</h4>
+                  <span class="text-sm font-bold border border-black px-2 py-1">2024-2026</span>
+                </div>
+                <p class="text-gray-600">剪辑师</p>
+              </div>
+              <div>
+                <div class="flex justify-between items-baseline mb-1">
+                  <h4 class="text-xl font-bold">乐山新闻网</h4>
+                  <span class="text-sm font-bold border border-black px-2 py-1">2023</span>
+                </div>
+                <p class="text-gray-600">新媒体编导实习生</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bauhaus Footer -->
+  <footer class="bg-black text-white py-16 px-6 lg:px-20 border-t-8 border-[#0033FF]">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+      <div>
+        <h2 class="text-4xl font-black uppercase tracking-tighter mb-2 text-white">Let's Connect.</h2>
+        <p class="text-gray-400 font-medium">AVAILABLE FOR NEW OPPORTUNITIES</p>
+      </div>
+      
+      <div class="flex flex-col md:flex-row gap-6 md:gap-12">
+        <a href="tel:15228192046" class="flex items-center gap-3 hover:text-[#0033FF] transition-colors group">
+          <div class="p-3 border-2 border-white group-hover:border-[#0033FF] transition-colors">
+            <i data-lucide="phone" class="w-5 h-5"></i>
+          </div>
+          <span class="font-bold text-lg">152-2819-2046</span>
+        </a>
+        
+        <a href="mailto:3022391359@qq.com" class="flex items-center gap-3 hover:text-[#0033FF] transition-colors group">
+          <div class="p-3 border-2 border-white group-hover:border-[#0033FF] transition-colors">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </div>
+          <span class="font-bold text-lg">3022391359@qq.com</span>
+        </a>
+      </div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-gray-800 text-center md:text-left text-sm text-gray-500 font-bold tracking-widest uppercase">
+      © <span id="current-year"></span> ZHOU YUTIAN. ALL RIGHTS RESERVED. DESIGNED IN BAUHAUS STYLE.
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script>
+    // --- Mock Data ---
+    const PORTFOLIO_DATA = [
+      {
+        id: 1,
+        title: 'AI漫剧爆款孵化',
+        category: '点众科技 / 内容运营',
+        date: '2026.01 - 2026.03',
+        description: '负责优质IP评估、榜单监测与爆款拆解，参与漫剧脚本的精修。成功挖掘《古井红痣》、《如果不曾见过光》、《三生劫》等高潜力漫剧IP。针对《遥遥无归》等剧情优化节奏与台词，使单集用户留存率提升15%。通过精细化运营策略，推动单部漫剧热力值突破3000w+，播放量增长200%。建立爆款内容分析模型，形成可复用的IP孵化方法论。',
+        tags: ['AI漫剧', '数据运营', '剧本精修'],
+        color: '#0033FF',
+        shape: 'circle',
+        images: [
+          'https://i.postimg.cc/LXqWdjYD/wei-xin-tu-pian-20260426231030-649-81.jpg',
+          'https://i.postimg.cc/85FY8LJL/wei-xin-tu-pian-20260426231001-647-81.jpg',
+          'https://i.postimg.cc/zBLQmTbn/wei-xin-tu-pian-20260426231018-648-81.jpg'
+        ]
+      },
+      {
+        id: 2,
+        title: '网易节目制作',
+        category: '网易浪潮工作室 / 短视频编导',
+        date: '2025.07 - 2025.10',
+        description: '独立负责“金开心俱乐部”账号从0到1搭建，通过精准定位受众，全平台自然引流积累粉丝超5万。独立完成5条以上视频后期剪辑，单条平均时长超15分钟，精心打磨内容。单条视频最高播放量达100万以上，点赞量超1万，有效提升账号影响力与知名度。',
+        tags: ['短视频策划', '账号起号', '后期剪辑'],
+        color: '#CCCCCC',
+        shape: 'triangle',
+        images: [
+          'https://i.postimg.cc/rmdH650h/wei-xin-tu-pian-20260426231104-651-81.jpg',
+          'https://i.postimg.cc/1tgdxDnj/wei-xin-tu-pian-20260426231124-652-81.jpg',
+          'https://i.postimg.cc/26qtpnbX/wei-xin-tu-pian-20260426231542-653-81.png',
+          'https://i.postimg.cc/SsXP0c21/wei-xin-tu-pian-20260426231621-654-81.png',
+          'https://i.postimg.cc/Jn92RtZd/wei-xin-tu-pian-20260426231715-655-81.png'
+        ]
+      },
+      {
+        id: 3,
+        title: '成年都是戏',
+        category: '微短剧 / 导演助理 / 制片',
+        date: '2023.11 - 2024.01',
+        description: '参与微短剧《成年都是戏》拍摄，担任导演助理与制片，统筹4+部短剧制作流程，协调剧组30余人日均工作安排。精准把控拍摄进度，单日拍摄素材量从8小时120条提升至180条。主导抖音平台宣发策略，设计10+条剧情切片短视频，推动单日播放量突破500万，登顶平台热榜TOP10。',
+        tags: ['微短剧', '制片统筹', '抖音热榜'],
+        color: '#000000',
+        shape: 'rect',
+        images: [
+          'https://i.postimg.cc/5tKrks0L/wei-xin-tu-pian-20260426230913-644-81.jpg',
+          'https://i.postimg.cc/rpZHYfmC/wei-xin-tu-pian-20260426230929-645-81.jpg',
+          'https://i.postimg.cc/76pWqb0R/wei-xin-tu-pian-20260426232137-656-81.jpg'
+        ]
+      },
+      {
+        id: 4,
+        title: 'SDGs世博全球青年联盟',
+        category: '视频剪辑 / 项目执行',
+        date: '2024.08 - 2026.04',
+        description: '承担线上圆桌论坛12期视频剪辑任务，运用专业软件对200+分钟原始素材进行筛选整合。通过节奏把控与特效添加提升视频观赏性。将视频同步上传至小红书及视频号，累计获得1万+播放量。通过分析后台数据优化风格，使单期平均播放时长提升30%。',
+        tags: ['圆桌论坛', '长视频剪辑', '数据优化'],
+        color: '#000000',
+        shape: 'lines',
+        images: [
+          'https://i.postimg.cc/QMYznftJ/9f3fe50d363effff4da2f78cedbdf30.jpg',
+          'https://i.postimg.cc/hjH5KhTN/wei-xin-tu-pian-20260426234159-658-81.jpg'
+        ]
+      },
+      {
+        id: 5,
+        title: 'WOD世界舞蹈大赛',
+        category: '宣传摄影师 / vlog剪辑',
+        date: '2025.01',
+        description: '负责WOD世界舞蹈大赛成都赛区vlog拍摄，精准捕捉30+关键赛事瞬间，确保素材完整性与高质量。运用专业剪辑软件，对100+分钟原始素材进行筛选、拼接，精心打造出10条5分钟精彩赛事vlog。剪辑后的vlog获主办方高度认可，成功吸引选手主动寻求合作，建立长期合作关系。',
+        tags: ['赛事跟拍', '活动vlog', '高燃混剪'],
+        color: '#0033FF',
+        shape: 'triangle',
+        images: [
+          'https://i.postimg.cc/D05ZG5nW/6be4432e1665bd9e7f33259776dc1e26.jpg',
+          'https://i.postimg.cc/htZd64Fb/916f7a3981884d75a31bad60b40437a3.jpg',
+          'https://i.postimg.cc/wT6RBRgL/3fc12c8a82d0794b03fd877fdd4c427e.jpg',
+          'https://i.postimg.cc/RVDCzWFB/19e2d6c8687beadd26b057719eecb7f9.jpg'
+        ]
+      },
+      {
+        id: 6,
+        title: '短片/纪录片作品',
+        category: '编剧 / 纪录片导演',
+        date: '2022 - 2025',
+        description: '独立导演/编剧完成《枯木》《窗》《勿听》等多部学生作品。剧本《时光交汇》获2024年四川省剧本大赛一等奖；纪录片《驾驶生活的囚笼》获得光影纪年第二届纪实影像大赛二等奖和温度棱镜奖；毕设剧本《室内滂沱》入围2026湾浪潮创投计划20强。',
+        tags: ['剧本创作', '纪录片', '获奖作品'],
+        color: '#0033FF',
+        shape: 'rect',
+        images: [
+          'https://i.postimg.cc/mDmjXkg1/cdfa3ba6c050d9e655700ad4c2f3f4b8.png',
+          'https://i.postimg.cc/tJHrnwJX/jing-zheng-2026-04-22-203748-1-44-1.jpg',
+          'https://i.postimg.cc/MK9hgZv2/yu-shi-li-de-shui-zuo-ye-zhong-ji-ban-feng-mian.jpg',
+          'https://i.postimg.cc/sD4wZzpv/e109e8c77f29d64cd349db8f6c4150ae.jpg',
+          'https://i.postimg.cc/J7v69TL6/bae76f93aaf53212ce4ab544452059a2.jpg',
+          'https://i.postimg.cc/nrkSZf2S/9d3cd1e3255003cd552041dd4e3e88eb.jpg',
+          'https://i.postimg.cc/brzqY8xb/a6acc3c5-fb2d-4ffd-b407-6a6092f222dc.png',
+          'https://i.postimg.cc/ydRHyxjH/bfc7510a-e412-4a4b-924a-b4282b6738c5.png'
+        ]
+      }
+    ];
+
+    // --- Bauhaus SVG Fallback Generator ---
+    const generateBauhausSVG = (shape, color) => {
+      const bg = '#f4f4f4';
+      let inner = '';
+      if (shape === 'rect') {
+        inner = `<rect x="20" y="20" width="60" height="60" fill="${color}" />`;
+      } else if (shape === 'circle') {
+        inner = `<circle cx="50" cy="50" r="35" fill="${color}" />`;
+      } else if (shape === 'triangle') {
+        inner = `<polygon points="50,15 85,85 15,85" fill="${color}" />`;
+      } else {
+        inner = `
+          <line x1="20" y1="20" x2="80" y2="80" stroke="${color}" stroke-width="10" />
+          <line x1="80" y1="20" x2="20" y2="80" stroke="${color}" stroke-width="10" />
+        `;
+      }
+      
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+        <rect width="100" height="100" fill="${bg}" />
+        ${inner}
+        <rect width="100" height="100" fill="none" stroke="#000" stroke-width="4" />
+      </svg>`;
+      return `data:image/svg+xml;base64,${btoa(svg)}`;
+    };
+
+    // --- State Management ---
+    let currentView = 'home';
+    let isMobileMenuOpen = false;
+
+    // --- Functions ---
+    
+    // Set Current Year in Footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Toggle Mobile Menu
+    function toggleMobileMenu() {
+      isMobileMenuOpen = !isMobileMenuOpen;
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('menu-icon');
+      
+      if (isMobileMenuOpen) {
+        menu.classList.remove('hidden');
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.classList.add('hidden');
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+
+    // Scroll Fade-in Observer setup
+    function setupFadeIn() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0', 'translate-y-12');
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+      document.querySelectorAll('.fade-in-el').forEach(el => observer.observe(el));
+    }
+
+    // Ripple Button Logic Setup
+    function setupRippleButtons() {
+      document.querySelectorAll('.btn-ripple').forEach(button => {
+        button.addEventListener('mousedown', function (e) {
+          const rect = button.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const circle = document.createElement('span');
+          circle.classList.add('absolute', 'bg-white/30', 'rounded-full', 'animate-ripple', 'pointer-events-none');
+          circle.style.left = `${x}px`;
+          circle.style.top = `${y}px`;
+          circle.style.width = '200%';
+          circle.style.height = '200%';
+          circle.style.transform = 'translate(-50%, -50%)';
+
+          button.appendChild(circle);
+          setTimeout(() => circle.remove(), 600);
+        });
+      });
+    }
+
+    // Render Home Works Grid
+    function renderHomeGrid() {
+      const grid = document.getElementById('works-grid');
+      let html = '';
+
+      PORTFOLIO_DATA.forEach((work, index) => {
+        const coverImg = (work.images && work.images.length > 0) ? work.images[0] : generateBauhausSVG(work.shape, work.color);
+        const tagsHtml = work.tags.map(tag => `<span class="text-xs font-bold bg-gray-100 px-2 py-1 uppercase">${tag}</span>`).join('');
+        const year = work.date.split('-')[0].trim();
+        const delay = index * 100;
+
+        html += `
+          <div class="fade-in-el opacity-0 translate-y-12 transition-all duration-700 ease-out group cursor-pointer block border-2 border-black bg-white transition-all duration-300 hover:-translate-y-2 hover:scale-[1.01] hover:shadow-[12px_12px_0px_0px_rgba(0,51,255,1)] hover:border-[#0033FF]" 
+               style="transition-delay: ${delay}ms;"
+               onclick="navigateTo('work', ${work.id})">
+            <div class="w-full aspect-[4/3] border-b-2 border-black relative overflow-hidden group-hover:border-[#0033FF] transition-colors">
+              <img src="${coverImg}" alt="${work.title}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 bg-gray-100" />
+              <div class="absolute inset-0 bg-[#0033FF]/0 group-hover:bg-[#0033FF]/10 transition-colors flex items-center justify-center">
+                 <div class="w-16 h-16 bg-white border-2 border-black rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                   <i data-lucide="arrow-up-right" class="w-7 h-7 text-[#0033FF]"></i>
+                 </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-2xl font-black uppercase tracking-tight group-hover:text-[#0033FF] transition-colors">${work.title}</h3>
+                <span class="text-sm font-bold px-3 py-1 border-2 border-black rounded-none">${year}</span>
+              </div>
+              <p class="text-gray-600 font-medium mb-6 uppercase text-sm tracking-wider">${work.category}</p>
+              <div class="flex flex-wrap gap-2">
+                ${tagsHtml}
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      grid.innerHTML = html;
+    }
+
+    // Render Work Detail Page
+    function renderWorkDetail(workId) {
+      const work = PORTFOLIO_DATA.find(w => w.id === workId);
+      if(!work) return;
+
+      const coverImg = (work.images && work.images.length > 0) ? work.images[0] : generateBauhausSVG(work.shape, work.color);
+      
+      document.getElementById('work-hero-img').src = coverImg;
+      document.getElementById('work-category').textContent = work.category;
+      document.getElementById('work-date').textContent = work.date;
+      document.getElementById('work-title').textContent = work.title;
+      document.getElementById('work-description').textContent = work.description;
+
+      document.getElementById('work-tags').innerHTML = work.tags.map(tag => 
+        `<span class="text-sm font-bold border-2 border-black px-3 py-1">${tag}</span>`
+      ).join('');
+
+      const gallery = document.getElementById('work-gallery');
+      if (work.images && work.images.length > 0) {
+        gallery.innerHTML = work.images.map((img, idx) => `
+          <div class="border-2 border-black bg-gray-50 p-4 flex flex-col shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] w-full">
+            <div class="border-b-2 border-black pb-3 mb-4 flex justify-between items-center">
+              <span class="text-sm font-bold tracking-widest text-gray-500 uppercase">VISUAL ${String(idx + 1).padStart(2, '0')}</span>
+              <div class="w-3 h-3 bg-[#0033FF]"></div>
+            </div>
+            <img src="${img}" alt="${work.title} visual ${idx + 1}" class="w-full h-auto object-cover border-2 border-black" onerror="this.onerror=null; this.src='${generateBauhausSVG(work.shape, work.color)}';"/>
+          </div>
+        `).join('');
+      } else {
+        gallery.innerHTML = `
+          <div class="w-full aspect-[16/9] border-2 border-black p-4 flex items-center justify-center bg-gray-50">
+            <span class="font-bold text-gray-400 tracking-widest uppercase">PROJECT VISUAL 01</span>
+          </div>
+          <div class="w-full aspect-[16/9] border-2 border-black p-4 flex items-center justify-center bg-gray-50">
+             <span class="font-bold text-gray-400 tracking-widest uppercase">PROJECT VISUAL 02</span>
+          </div>
+        `;
+      }
+    }
+
+    // Navigation Router
+    function navigateTo(view, workId = null) {
+      currentView = view;
+      
+      // Reset Fade-in elements states (optional smooth UX reset)
+      document.querySelectorAll('.fade-in-el').forEach(el => {
+        el.classList.add('opacity-0', 'translate-y-12');
+        el.classList.remove('opacity-100', 'translate-y-0');
+      });
+
+      // Toggle Display
+      document.getElementById('view-home').classList.toggle('hidden', view !== 'home');
+      document.getElementById('view-work').classList.toggle('hidden', view !== 'work');
+      document.getElementById('view-about').classList.toggle('hidden', view !== 'about');
+
+      // Update Nav active states
+      document.getElementById('nav-btn-home').className = `hover:text-[#0033FF] transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-[#0033FF] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left ${view === 'home' ? 'text-[#0033FF] after:scale-x-100' : ''}`;
+      document.getElementById('nav-btn-about').className = `hover:text-[#0033FF] transition-colors relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-[#0033FF] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left ${view === 'about' ? 'text-[#0033FF] after:scale-x-100' : ''}`;
+
+      if (view === 'work' && workId !== null) {
+        renderWorkDetail(workId);
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Re-trigger visual systems
+      setTimeout(() => {
+        setupFadeIn();
+        lucide.createIcons();
+      }, 50);
+    }
+
+    // --- Initialization ---
+    window.addEventListener('DOMContentLoaded', () => {
+      renderHomeGrid();
+      setupRippleButtons();
+      setupFadeIn();
+      lucide.createIcons();
+    });
+
+  </script>
+</body>
+</html>
